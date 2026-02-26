@@ -21,8 +21,8 @@ WHAT YOU NEED TO CUSTOMIZE:
     3. Update the model paths if you changed them
     4. Customize the styling if desired
 
-Author: [Your Name]  # <-- UPDATE THIS!
-Dataset: [Your Dataset]  # <-- UPDATE THIS!
+Author: [Francisco Molina]  # <-- UPDATE THIS!
+Dataset: [Workation Price Pr>ediction Challenge-MachineHack]  # <-- UPDATE THIS!
 """
 
 import streamlit as st
