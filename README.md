@@ -418,30 +418,43 @@ Reach out to Abishek on Slack if you have any questions or get stuck!
 
 ---
 
-## Your Project Details (Update This Section!)
+## Your Project Details 
 
-> **Important:** This section is the first thing visitors see when they land on your GitHub repo. This is your portfolio—make it professional and complete! Update this before your final submission.
+Project Details
 
-**Student Name:** [Your Name]
+Important: This project demonstrates an end-to-end Machine Learning pipeline, from data preprocessing to deploying a business-optimized web application.
 
-**Dataset:** [Dataset name and source - include a link if from Kaggle]
+Student Name: Francisco Molina
 
-**Problem Statement:** [What are you trying to predict and why? Write 2-3 sentences explaining the value of this prediction.]
+Dataset: Workation Price Prediction Challenge (MachineHack)
 
-**Target Variable:** [Column name - e.g., "price" or "salary"]
+Problem Statement: Travel companies need to accurately price group trips and quickly identify potential VIP clients. This project solves that by predicting the exact travel package costs for fast, data-driven quoting, and classifying travelers into spending tiers (Low, Medium, High Spender) to optimize premium upselling strategies and maximize revenue.
 
-**Selected Features:** [List the 4-8 features your final model uses]
+Target Variable: Travel Package Price (Continuous for Regression) & Spending Tier (Categorical for Classification)
 
-**Best Regression Model:** [Model type and key metric - e.g., "Random Forest (R² = 0.82)"]
+Selected Features: 
+1. Destination (Label Encoded)
+2. Airline (Label Encoded)
+3. Journey_Month
+4. Num_Places_Visited
+5. Flight Stops (Layovers)
+6. Trip_Complexity
 
-**Best Classification Model:** [Model type and key metric - e.g., "Gradient Boosting (Accuracy = 85%)"]
+Best Regression Model: Gradient Boosting Regressor (R² = 0.66, Test RMSE = $7,116)
+
+Best Classification Model: Business-Optimized Gradient Boosting (Accuracy = 77%, VIP Recall = 81% - Optimized using balanced sample weights to heavily penalize missing High Spenders).
 
 **Deployed App URL:** [Add your Streamlit Cloud URL once deployed]
 
 ### Project Highlights
 
-[Write 2-3 bullet points about interesting findings or challenges you overcame. This helps employers understand your thought process!]
+Key Findings & Challenges Overcome
 
+- Overcoming Class Imbalance for VIP Clients: The initial classification model struggled to identify 'High Spenders' (VIPs) because they represented a minority class in the dataset. I solved this by implementing compute_sample_weight to apply balanced class weights during training. This adjustment heavily penalized false negatives and successfully boosted the VIP Recall metric to 81%, directly aligning the model with the business goal of capturing premium leads.
+
+- Managing High-Cardinality Categorical Data: The dataset contained a massive amount of unique string combinations for Destination (565 unique routes) and Airline (314 combinations). Instead of using One-Hot Encoding, which would have exploded the dimensionality and slowed down the model, I utilized Label Encoding paired with tree-based Gradient Boosting models, which handle numeric categorical representations highly effectively.
+
+- Bridging Data Science and User Experience (UX): When deploying the Streamlit app, asking users to input raw encoded numbers for cities and airlines was poor UX. I overcame this by engineering "Pre-Loaded Travel Scenarios" in the frontend. By mapping frequent, real-world route codes from the dataset to human-readable buttons (e.g., "Premium Long-Haul"), the app became interactive and ready for live business demonstrations without breaking the model's expected inputs.
 -
 -
 -
